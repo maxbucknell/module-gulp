@@ -1,0 +1,17 @@
+{
+    "name": "maxbucknell/module-gulp",
+    "description": "Gulp integration with Magento 2",
+    "require": {
+        "php": "~5.6.0|~7.0.0"
+    },
+    "type": "magento2-module",
+    "license": "mit",
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "MaxBucknell\\Gulp\\": ""
+        }
+    }
+}
