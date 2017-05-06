@@ -11,7 +11,8 @@
             "registration.php"
         ],
         "psr-4": {
-            "MaxBucknell\\Gulp\\": ""
+            "MaxBucknell\\Gulp\\": "src/",
+            "MaxBucknell\\Gulp\\Test\\": "test/"
         }
     }
 }

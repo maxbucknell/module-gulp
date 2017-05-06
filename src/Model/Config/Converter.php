@@ -1,7 +1,6 @@
 <?php
 namespace MaxBucknell\Gulp\Model\Config;
 
-
 use Magento\Framework\Config\ConverterInterface;
 
 class Converter implements ConverterInterface
@@ -12,19 +11,20 @@ class Converter implements ConverterInterface
      */
     public function convert($source)
     {
+        $xpath = new \DOMXPath($source);
         $result = [];
 
-        $result['tasks'] = $this->collectTasks($source);
-        $result['dependencies'] = $this->collectDependencies($source);
+        $result['tasks'] = $this->collectTasks($xpath);
+        $result['dependencies'] = $this->collectDependencies($xpath);
 
         return $result;
     }
 
-    public function collectTasks(\DOMDocument $source)
+    public function collectTasks(\DOMXPath $xpath)
     {
         $result = [];
 
-        foreach ($source->getElementsByTagName('task') as $taskNode) {
+        foreach ($xpath->query('task') as $taskNode) {
             /** @var \DOMElement $taskNode */
 
             $taskName = $taskNode->getAttribute('name');
@@ -65,9 +65,8 @@ class Converter implements ConverterInterface
         }
     }
 
-    public function collectDependencies(\DOMDocument $source)
+    public function collectDependencies(\DOMXPath $xpath)
     {
-        $xpath = new \DOMXPath($source);
         $result = [];
 
         foreach ($xpath->query('task/dependencies/package') as $package) {
