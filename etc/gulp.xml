@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<gulp
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:module:MaxBucknell_Gulp:etc/gulp.xsd"
+>
+    <task name="default">
+        <dependencies>
+            <package name="gulp" version="^3.9.1" />
+        </dependencies>
+
+        <subtasks>
+            <task name="less" />
+        </subtasks>
+    </task>
+
+    <task name="less">
+        <dependencies>
+            <package name="gulp-less" version="^3.3.0" />
+        </dependencies>
+
+        <source>script.js</source>
+    </task>
+</gulp>
