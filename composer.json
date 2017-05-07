@@ -2,7 +2,8 @@
     "name": "maxbucknell/module-gulp",
     "description": "Gulp integration with Magento 2",
     "require": {
-        "php": "~5.6.0|~7.0.0"
+        "php": "~7.0.0",
+        "league/flysystem": "^1.0.40"
     },
     "type": "magento2-module",
     "license": "mit",

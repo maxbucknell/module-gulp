@@ -9,18 +9,18 @@
     </xs:element>
 
     <xs:complexType name="taskType">
-        <xs:all>
+        <xs:sequence>
             <xs:element name="dependencies" type="dependenciesType" minOccurs="0" maxOccurs="1" />
             <xs:element name="subtasks" type="subtasksType" minOccurs="0" maxOccurs="1" />
             <xs:element name="source" type="xs:string" minOccurs="0" maxOccurs="1" />
-        </xs:all>
+        </xs:sequence>
         <xs:attribute name="name" type="xs:string" use="required" />
     </xs:complexType>
 
     <xs:complexType name="dependenciesType">
-        <xs:all>
-            <xs:element name="package" type="packageType" minOccurs="1" maxOccurs="unbounded" />
-        </xs:all>
+        <xs:sequence>
+            <xs:element name="package" type="packageType" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="packageType">
@@ -29,9 +29,9 @@
     </xs:complexType>
 
     <xs:complexType name="subtasksType">
-        <xs:all>
-            <xs:element name="task" type="subtaskType" minOccurs="1" maxOccurs="unbounded" />
-        </xs:all>
+        <xs:sequence>
+            <xs:element name="task" type="subtaskType" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="subtaskType">

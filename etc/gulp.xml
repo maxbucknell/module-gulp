@@ -6,6 +6,7 @@
     <task name="default">
         <dependencies>
             <package name="gulp" version="^3.9.1" />
+            <package name="gulp-other" version="^3.9.1" />
         </dependencies>
 
         <subtasks>

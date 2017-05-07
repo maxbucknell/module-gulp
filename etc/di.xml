@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="MaxBucknell\Gulp\Api\BuilderInterface" type="MaxBucknell\Gulp\Model\Builder" />
+
+    <type name="MaxBucknell\Gulp\Model\Builder">
+        <arguments>
+            <argument name="builders" xsi:type="array">
+                <item name="package.json" xsi:type="object">MaxBucknell\Gulp\Model\Builder\PackageJson</item>
+                <item name="gulpfile" xsi:type="object">MaxBucknell\Gulp\Model\Builder\Gulpfile</item>
+                <item name="sources" xsi:type="object">MaxBucknell\Gulp\Model\Builder\Sources</item>
+            </argument>
+        </arguments>
+    </type>
 
     <virtualType name="MaxBucknell\Gulp\Model\Config\Reader" type="Magento\Framework\Config\Reader\Filesystem">
         <arguments>
@@ -13,6 +24,14 @@
         <arguments>
             <argument name="reader" xsi:type="object">MaxBucknell\Gulp\Model\Config\Reader</argument>
             <argument name="cacheId" xsi:type="string">maxbucknell_gulp_config_cache</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="gulpBuild" xsi:type="object">MaxBucknell\Gulp\Console\Command\Build</item>
+            </argument>
         </arguments>
     </type>
 </config>
