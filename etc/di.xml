@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="MaxBucknell\Gulp\Api\BuilderInterface" type="MaxBucknell\Gulp\Model\Builder" />
+    <preference for="MaxBucknell\Gulp\Api\DataProviderInterface" type="MaxBucknell\Gulp\Model\DataProvider" />
 
     <type name="MaxBucknell\Gulp\Model\Builder">
         <arguments>
@@ -8,6 +9,26 @@
                 <item name="package.json" xsi:type="object">MaxBucknell\Gulp\Model\Builder\PackageJson</item>
                 <item name="gulpfile" xsi:type="object">MaxBucknell\Gulp\Model\Builder\Gulpfile</item>
                 <item name="sources" xsi:type="object">MaxBucknell\Gulp\Model\Builder\Sources</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="MaxBucknell\Gulp\Model\DataProvider">
+        <arguments>
+            <argument name="dataProviders" xsi:type="array">
+                <item name="store_code" xsi:type="object">MaxBucknell\Gulp\Model\DataProvider\StoreCode</item>
+                <item name="config" xsi:type="object">MaxBucknell\Gulp\Model\DataProvider\Config</item>
+                <item name="modules" xsi:type="object">MaxBucknell\Gulp\Model\DataProvider\Modules</item>
+                <item name="themes" xsi:type="object">MaxBucknell\Gulp\Model\DataProvider\Themes</item>
+                <item name="phrases" xsi:type="object">MaxBucknell\Gulp\Model\DataProvider\Phrases</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="MaxBucknell\Gulp\Model\DataProvider\Config">
+        <arguments>
+            <argument name="configFields" xsi:type="array">
+                <item name="general/locale/code" xsi:type="string">general/locale/code</item>
             </argument>
         </arguments>
     </type>
