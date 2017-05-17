@@ -48,8 +48,12 @@ class Sources implements BuilderInterface
         $destinationDir = "{$root}/{$name}";
 
         foreach ($this->filesystem->getFilesystem()->listContents($sourceDir, true) as $file) {
-            $source = "{$sourceDir}/{$file['basename']}";
-            $destination = "{$destinationDir}/{$file['basename']}";
+            if ($file['type'] !== 'file') {
+                continue;
+            }
+
+            $source = $file['path'];
+            $destination = str_replace($sourceDir, $destinationDir, "/{$file['path']}");
 
             $this->filesystem->getFilesystem()->copy($source, $destination);
         }
