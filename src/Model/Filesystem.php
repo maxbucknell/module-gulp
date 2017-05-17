@@ -28,6 +28,14 @@ class Filesystem
         $this->flysystemFactory = $flysystemFactory;
     }
 
+    public function getAbsoluteLocation()
+    {
+        $root = $this->getRootDirectory();
+        $dir = $this->getLocation();
+
+        return "{$root}/{$dir}";
+    }
+
     public function getLocation()
     {
         $var = $this->directoryList->getPath(DirectoryList::VAR_DIR);

@@ -31,6 +31,7 @@
         <arguments>
             <argument name="commands" xsi:type="array">
                 <item name="gulpBuild" xsi:type="object">MaxBucknell\Gulp\Console\Command\Build</item>
+                <item name="gulpInstall" xsi:type="object">MaxBucknell\Gulp\Console\Command\Install</item>
             </argument>
         </arguments>
     </type>
