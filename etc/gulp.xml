@@ -6,19 +6,57 @@
     <task name="default">
         <dependencies>
             <package name="gulp" version="^3.9.1" />
-            <package name="gulp-other" version="^3.9.1" />
         </dependencies>
-
         <subtasks>
+            <task name="copy" />
             <task name="less" />
+            <task name="translations" />
+            <task name="requirejs-config" />
         </subtasks>
+    </task>
+
+    <task name="clean">
+        <dependencies>
+            <package name="rimraf" version="^2.6.1" />
+        </dependencies>
+        <source>MaxBucknell_Gulp/task/clean.js</source>
+    </task>
+
+    <task name="watch">
+
+    </task>
+
+    <task name="flatten">
+        <dependencies>
+            <package name="lodash" version="^4.17.4"/>
+            <package name="through2" version="^2.0.3" />
+            <package name="vinyl" version="^2.0.2" />
+            <package name="glob" version="^7.1.1" />
+            <package name="mkdirp" version="^0.5.1" />
+        </dependencies>
+        <source>MaxBucknell_Gulp/task/flatten.js</source>
+    </task>
+
+    <task name="copy">
+        <source>MaxBucknell_Gulp/task/copy.js</source>
     </task>
 
     <task name="less">
         <dependencies>
             <package name="gulp-less" version="^3.3.0" />
+            <package name="gulp-sourcemaps" version="^2.6.0" />
         </dependencies>
+        <source>MaxBucknell_Gulp/task/less.js</source>
+    </task>
 
-        <source>script.js</source>
+    <task name="translations">
+        <source>MaxBucknell_Gulp/task/translations.js</source>
+    </task>
+
+    <task name="requirejs-config">
+        <dependencies>
+            <package name="gulp-concat" version="^2.6.1" />
+        </dependencies>
+        <source>MaxBucknell_Gulp/task/requirejs-config.js</source>
     </task>
 </gulp>
