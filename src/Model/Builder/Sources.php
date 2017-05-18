@@ -47,6 +47,10 @@ class Sources implements BuilderInterface
         $sourceDir = "{$path}/gulp";
         $destinationDir = "{$root}/{$name}";
 
+        if ($this->filesystem->getFilesystem()->has($destinationDir)) {
+            $this->filesystem->getFilesystem()->deleteDir($destinationDir);
+        }
+
         foreach ($this->filesystem->getFilesystem()->listContents($sourceDir, true) as $file) {
             if ($file['type'] !== 'file') {
                 continue;

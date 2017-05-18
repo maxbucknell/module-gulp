@@ -21,6 +21,10 @@
                 <item name="modules" xsi:type="object">MaxBucknell\Gulp\Model\DataProvider\Modules</item>
                 <item name="themes" xsi:type="object">MaxBucknell\Gulp\Model\DataProvider\Themes</item>
                 <item name="phrases" xsi:type="object">MaxBucknell\Gulp\Model\DataProvider\Phrases</item>
+                <item name="base_dir" xsi:type="object">MaxBucknell\Gulp\Model\DataProvider\BaseDir</item>
+                <item name="output_dir" xsi:type="object">MaxBucknell\Gulp\Model\DataProvider\OutputDir</item>
+                <item name="build_dir" xsi:type="object">MaxBucknell\Gulp\Model\DataProvider\BuildDir</item>
+                <item name="requirejs_config_dir" xsi:type="object">MaxBucknell\Gulp\Model\DataProvider\RequirejsConfigDir</item>
             </argument>
         </arguments>
     </type>

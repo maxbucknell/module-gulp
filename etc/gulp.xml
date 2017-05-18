@@ -56,6 +56,7 @@
     <task name="requirejs-config">
         <dependencies>
             <package name="gulp-concat" version="^2.6.1" />
+            <package name="vinyl-file" version="^3.0.0" />
         </dependencies>
         <source>MaxBucknell_Gulp/task/requirejs-config.js</source>
     </task>
