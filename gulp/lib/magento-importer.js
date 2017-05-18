@@ -41,7 +41,7 @@ function magentoImporter(config) {
 
                 const files = [];
 
-                if (fs.existsSync(path.join(build_dir, include))) {
+                if (fs.existsSync(path.join(build_dir, 'css', include))) {
                     files.push(`@import '${include}';`);
                 }
 
