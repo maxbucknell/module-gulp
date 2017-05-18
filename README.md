@@ -17,10 +17,10 @@ implementation, it will work with this, and probably be faster.
 Install via Composer! (Packagist entry is coming)
 
 ```bash
-composer global config repositories.gulp vcs https://github.com/maxbucknell/module-gulp.git
-composer global config "minimum-stability" "dev"
-composer global config "prefer-stable" "true"
-composer global require maxbucknell/module-gulp
+composer config repositories.gulp vcs https://github.com/maxbucknell/module-gulp.git
+composer config "minimum-stability" "dev"
+composer config "prefer-stable" "true"
+composer require maxbucknell/module-gulp
 ```
 
 ## Getting Started
