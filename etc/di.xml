@@ -25,6 +25,7 @@
                 <item name="output_dir" xsi:type="object">MaxBucknell\Gulp\Model\DataProvider\OutputDir</item>
                 <item name="build_dir" xsi:type="object">MaxBucknell\Gulp\Model\DataProvider\BuildDir</item>
                 <item name="requirejs_config_dir" xsi:type="object">MaxBucknell\Gulp\Model\DataProvider\RequirejsConfigDir</item>
+                <item name="postcss" xsi:type="object">MaxBucknell\Gulp\Model\DataProvider\PostCss</item>
             </argument>
         </arguments>
     </type>
@@ -35,6 +36,9 @@
                 <item name="general/locale/code" xsi:type="string">general/locale/code</item>
             </argument>
         </arguments>
+    </type>
+
+    <type name="MaxBucknell\Gulp\Model\DataProvider\PostCss">
     </type>
 
     <virtualType name="MaxBucknell\Gulp\Model\Config\Reader" type="Magento\Framework\Config\Reader\Filesystem">
