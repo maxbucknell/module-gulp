@@ -81,14 +81,14 @@ class Run extends Command
         $store = $this->storeRepository->get($storeCode);
         $data = $this->dataProvider->getData($store);
 
-        $encodedData = \json_encode($data, JSON_FORCE_OBJECT);
+        $encodedData = \escapeshellarg(\json_encode($data, JSON_FORCE_OBJECT));
         $gulpCommand = $input->getArgument('gulp-command');
 
         $directory = $this->filesystem->getAbsoluteLocation();
         chdir($directory);
 
         $command = <<<CMD
-NODE_PATH=. ./node_modules/.bin/gulp --magento='{$encodedData}' {$gulpCommand};
+NODE_PATH=. ./node_modules/.bin/gulp --magento={$encodedData} {$gulpCommand};
 CMD;
 
         passthru($command);
