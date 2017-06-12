@@ -81,7 +81,7 @@ class Run extends Command
         $store = $this->storeRepository->get($storeCode);
         $data = $this->dataProvider->getData($store);
 
-        $encodedData = escapeshellarg(\json_encode($data, JSON_FORCE_OBJECT));
+        $encodedData = \escapeshellarg(\json_encode($data, JSON_FORCE_OBJECT));
         $gulpCommand = $input->getArgument('gulp-command');
 
         $directory = $this->filesystem->getAbsoluteLocation();
