@@ -9,9 +9,23 @@
         </dependencies>
         <subtasks>
             <task name="copy" />
+            <task name="copy:js" />
+            <task name="copy:html" />
             <task name="less" />
             <task name="translations" />
             <task name="requirejs-config" />
+        </subtasks>
+    </task>
+
+    <task name="prod">
+        <subtasks>
+            <task name="copy" />
+            <task name="prod:js" />
+            <task name="less" />
+            <task name="translations" />
+            <task name="requirejs-config" />
+            <task name="prod:js" />
+            <task name="prod:html" />
         </subtasks>
     </task>
 
@@ -41,6 +55,14 @@
         <source>MaxBucknell_Gulp/task/copy.js</source>
     </task>
 
+    <task name="copy:js">
+        <source>MaxBucknell_Gulp/task/copy-js.js</source>
+    </task>
+
+    <task name="copy:html">
+        <source>MaxBucknell_Gulp/task/copy-html.js</source>
+    </task>
+
     <task name="less">
         <dependencies>
             <package name="gulp-less" version="^3.3.0" />
@@ -50,6 +72,22 @@
             <package name="gulp-rename" version="^1.2.2" />
         </dependencies>
         <source>MaxBucknell_Gulp/task/less.js</source>
+    </task>
+
+    <task name="prod:html">
+        <dependencies>
+            <package name="gulp-sourcemaps" version="^2.6.0" />
+            <package name="gulp-htmlmin" version="^3.0.0" />
+        </dependencies>
+        <source>MaxBucknell_Gulp/task/prod/html.js</source>
+    </task>
+
+    <task name="prod:js">
+        <dependencies>
+            <package name="gulp-sourcemaps" version="^2.6.0" />
+            <package name="gulp-uglify" version="^3.0.0" />
+        </dependencies>
+        <source>MaxBucknell_Gulp/task/prod/js.js</source>
     </task>
 
     <task name="translations">
