@@ -41,11 +41,9 @@ class Install extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
 
-        $executable = $input->getOption('npm') ? 'npm' : 'yarn';
         $directory = $this->filesystem->getAbsoluteLocation();
 
         chdir($directory);
-        passthru("rm -rf package-lock.json");
-        passthru("$executable install");
+        passthru("npm install");
     }
 }

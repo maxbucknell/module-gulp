@@ -62,10 +62,10 @@ class Run extends Command
             'default'
         );
         $this->addArgument(
-            'gulp-command',
+            'command',
             InputArgument::IS_ARRAY,
             'Commands to run',
-            ['default']
+            ['build']
         );
     }
 
@@ -82,17 +82,17 @@ class Run extends Command
         $data = $this->dataProvider->getData($store);
 
         $encodedData = \escapeshellarg(\json_encode($data, JSON_FORCE_OBJECT));
-        $gulpCommands = $input->getArgument('gulp-command');
+        $commands = $input->getArgument('command');
 
         $directory = $this->filesystem->getAbsoluteLocation();
         chdir($directory);
 
-        foreach ($gulpCommands as $gulpCommand) {
-            $command = <<<CMD
-NODE_PATH=. ./node_modules/.bin/gulp --magento={$encodedData} {$gulpCommand};
+        foreach ($commands as $command) {
+            $consoleCommand = <<<CMD
+NODE_PATH=. MAGENTO_DATA={$encodedData} npm run {$command};
 CMD;
 
-            passthru($command);
+            passthru($consoleCommand);
         }
     }
 }
