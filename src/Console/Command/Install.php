@@ -45,6 +45,7 @@ class Install extends Command
         $directory = $this->filesystem->getAbsoluteLocation();
 
         chdir($directory);
+        passthru("rm -rf package-lock.json");
         passthru("$executable install");
     }
 }
