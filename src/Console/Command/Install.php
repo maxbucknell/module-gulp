@@ -44,6 +44,6 @@ class Install extends Command
         $directory = $this->filesystem->getAbsoluteLocation();
 
         chdir($directory);
-        passthru("npm install");
+        passthru("npm update");
     }
 }

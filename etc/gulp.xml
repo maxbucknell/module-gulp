@@ -6,4 +6,14 @@
     <task name="env">
         <command>env</command>
     </task>
+
+    <task name="flatten">
+        <dependencies>
+            <package name="lodash" version="latest" />
+            <package name="glob" version="latest" />
+            <package name="mkdirp" version="latest" />
+        </dependencies>
+
+        <command>node MaxBucknell_Gulp/task/flatten.js</command>
+    </task>
 </gulp>
