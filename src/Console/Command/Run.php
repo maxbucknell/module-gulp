@@ -62,7 +62,7 @@ class Run extends Command
             'default'
         );
         $this->addArgument(
-            'command',
+            'commands',
             InputArgument::IS_ARRAY,
             'Commands to run',
             ['build']
@@ -82,7 +82,7 @@ class Run extends Command
         $data = $this->dataProvider->getData($store);
 
         $encodedData = \escapeshellarg(\json_encode($data, JSON_FORCE_OBJECT));
-        $commands = $input->getArgument('command');
+        $commands = $input->getArgument('commands');
 
         $directory = $this->filesystem->getAbsoluteLocation();
         chdir($directory);

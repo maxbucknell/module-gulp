@@ -36,7 +36,7 @@ class PackageJson implements BuilderInterface
 
     public function build()
     {
-        $config = $this->gulpConfig->get('dependencies');
+        $config = $this->gulpConfig->get(null);
         $contents = $this->packageJsonGenerator->generate($config);
 
         $location = $this->filesystem->getLocation();

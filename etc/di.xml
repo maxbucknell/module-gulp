@@ -7,7 +7,6 @@
         <arguments>
             <argument name="builders" xsi:type="array">
                 <item name="package.json" xsi:type="object">MaxBucknell\Gulp\Model\Builder\PackageJson</item>
-                <item name="gulpfile" xsi:type="object">MaxBucknell\Gulp\Model\Builder\Gulpfile</item>
                 <item name="sources" xsi:type="object">MaxBucknell\Gulp\Model\Builder\Sources</item>
             </argument>
         </arguments>
