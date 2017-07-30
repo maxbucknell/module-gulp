@@ -76,4 +76,11 @@
         </dependencies>
         <command>node MaxBucknell_Gulp/task/postcss.js</command>
     </task>
+
+    <task name="copy">
+        <dependencies>
+            <package name="fs-extra" version="latest" />
+        </dependencies>
+        <command>node MaxBucknell_Gulp/task/copy.js css csv eot gif htc htm html ico jbf jpg json less map md png sass scss svg swf ttf txt woff woff2</command>
+    </task>
 </gulp>
