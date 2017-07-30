@@ -67,4 +67,13 @@
     <task name="css">
         <command>concurrently "npm run less"</command>
     </task>
+
+    <task name="postcss">
+        <dependencies>
+            <package name="postcss-cli" version="latest" />
+            <package name="cssnano" version="latest" />
+            <package name="autoprefixer" version="latest" />
+        </dependencies>
+        <command>node MaxBucknell_Gulp/task/postcss.js</command>
+    </task>
 </gulp>
