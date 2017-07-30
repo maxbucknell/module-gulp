@@ -11,21 +11,29 @@ const glob = require('glob');
 const symlink = promisify(fs.symlink);
 const mkdirp = promisify(require('mkdirp'));
 
+function findFilesInDirectory (directory) {
+    function createFile (file) {
+        return {
+            input: path.join(directory.input, file),
+            output: path.join(directory.output, file)
+        };
+    }
+
+    return _.map(
+        glob.sync(
+            '**/*',
+            { cwd: directory.input, nodir: true }
+        ),
+        createFile
+    );
+}
+
 function getStaticFilesMap () {
-    const directories = findDirectories.static();
+    const directories = findDirectories.frontend('templates');
 
     const files = _.flatMap(
         directories,
-        (directory) => _.map(
-            glob.sync(
-                '**/*',
-                { cwd: directory.input, nodir: true }
-            ),
-            (file) => ({
-                input: path.join(directory.input, file),
-                output: path.join(directory.output, file)
-            })
-        )
+        findFilesInDirectory
     );
 
     const deDuplicatedFiles = _.keyBy(
@@ -41,13 +49,13 @@ function getStaticFilesMap () {
     return filesMap;
 }
 
-function flattenStatic () {
+function flattenTemplates () {
     const files = getStaticFilesMap();
 
     const promises = _.map(
         files,
         (input, output) => {
-            const link = path.join(magentoData.build_dir, 'flat/static', output);
+            const link = path.join(magentoData.build_dir, 'flat/templates', output);
             const linkDir = path.dirname(link);
             const relativeInput = path.relative(linkDir, input);
 
@@ -55,7 +63,7 @@ function flattenStatic () {
         }
     );
 
-    return Promise.all(promises).then('Flattened');
+    return Promise.all(promises).then(() => console.log('Flattened all templates'));
 }
 
-flattenStatic();
+flattenTemplates();

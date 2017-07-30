@@ -26,7 +26,7 @@ function findFrontendModuleDirectories (name) {
 }
 
 function getThemeModuleOverrides (theme, name) {
-    return _.map(
+    return _.flatMap(
         magentoData.modules,
         (location, moduleName) => ([
             {
@@ -78,7 +78,7 @@ function findStaticDirectories () {
     return _.concat(
         [
             {
-                input: 'lib/web',
+                input: path.join(magentoData.base_dir, 'lib/web'),
                 output: ''
             }
         ],

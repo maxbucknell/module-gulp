@@ -7,13 +7,47 @@
         <command>env</command>
     </task>
 
-    <task name="flatten">
+    <task name="flatten:static">
         <dependencies>
             <package name="lodash" version="latest" />
             <package name="glob" version="latest" />
             <package name="mkdirp" version="latest" />
         </dependencies>
 
-        <command>node MaxBucknell_Gulp/task/flatten.js</command>
+        <command>node MaxBucknell_Gulp/task/flatten/static.js</command>
+    </task>
+
+    <task name="flatten:templates">
+        <dependencies>
+            <package name="lodash" version="latest" />
+            <package name="glob" version="latest" />
+            <package name="mkdirp" version="latest" />
+        </dependencies>
+
+        <command>node MaxBucknell_Gulp/task/flatten/templates.js</command>
+    </task>
+
+    <task name="flatten">
+        <dependencies>
+            <package name="concurrently" version="latest" />
+        </dependencies>
+
+        <command>concurrently "npm run flatten:static" "npm run flatten:templates"</command>
+    </task>
+
+    <task name="clean:build">
+        <dependencies>
+            <package name="rimraf" version="latest" />
+        </dependencies>
+
+        <command>node MaxBucknell_Gulp/task/clean/build.js</command>
+    </task>
+
+    <task name="clean:pub">
+        <dependencies>
+            <package name="rimraf" version="latest" />
+        </dependencies>
+
+        <command>node MaxBucknell_Gulp/task/clean/pub.js</command>
     </task>
 </gulp>
