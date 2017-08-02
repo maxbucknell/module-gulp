@@ -27,6 +27,16 @@
         <command>node MaxBucknell_Gulp/task/flatten/templates.js</command>
     </task>
 
+    <task name="flatten:requirejs-config">
+        <dependencies>
+            <package name="lodash" version="latest" />
+            <package name="glob" version="latest" />
+            <package name="mkdirp" version="latest" />
+        </dependencies>
+
+        <command>node MaxBucknell_Gulp/task/flatten/requirejs-config.js</command>
+    </task>
+
     <task name="flatten">
         <dependencies>
             <package name="concurrently" version="latest" />
@@ -82,5 +92,12 @@
             <package name="fs-extra" version="latest" />
         </dependencies>
         <command>node MaxBucknell_Gulp/task/copy.js css csv eot gif htc htm html ico jbf jpg json less map md png sass scss svg swf ttf txt woff woff2</command>
+    </task>
+
+    <task name="requirejs-config">
+        <dependencies>
+            <package name="glob" version="latest" />
+        </dependencies>
+        <command>node MaxBucknell_Gulp/task/requirejs-config.js</command>
     </task>
 </gulp>

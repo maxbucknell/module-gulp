@@ -6,7 +6,8 @@ const fs = require('fs');
 
 module.exports = {
     frontend: findFrontendDirectories,
-    static: findStaticDirectories
+    static: findStaticDirectories,
+    requirejsConfig: findRequirejsConfigFiles
 };
 
 function findFrontendModuleDirectories (name) {
@@ -85,4 +86,23 @@ function findStaticDirectories () {
         moduleLocations,
         themeLocations
     )
+}
+
+function findRequirejsConfigFiles () {
+    const moduleLocations = findFrontendModuleDirectories('requirejs-config.js');
+    const themeLocations = _.flatMapDeep(
+        magentoData.themes,
+        (theme) => ([
+            getThemeModuleOverrides(theme, 'requirejs-config.js'),
+            {
+                input: path.join(theme, 'requirejs-config.js'),
+                output: ''
+            }
+        ])
+    );
+
+    return _.concat(
+        moduleLocations,
+        themeLocations
+    );
 }
