@@ -47,6 +47,6 @@ class Themes implements DataProviderInterface
             $result[] = $this->componentRegistrar->getPath(ComponentRegistrar::THEME, $theme->getFullPath());
         }
 
-        return $result;
+        return \json_encode($result, JSON_FORCE_OBJECT);
     }
 }

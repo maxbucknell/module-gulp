@@ -81,7 +81,12 @@ class Run extends Command
         $store = $this->storeRepository->get($storeCode);
         $data = $this->dataProvider->getData($store);
 
-        $encodedData = \escapeshellarg(\json_encode($data, JSON_FORCE_OBJECT));
+        $environment = '';
+        foreach ($data as $var => $value) {
+            $sanitised = \escapeshellarg($value);
+            $environment .= "{$var}={$sanitised} ";
+        }
+
         $commands = $input->getArgument('commands');
 
         $directory = $this->filesystem->getAbsoluteLocation();
@@ -89,7 +94,7 @@ class Run extends Command
 
         foreach ($commands as $command) {
             $consoleCommand = <<<CMD
-NODE_PATH=. MAGENTO_DATA={$encodedData} npm run {$command};
+NODE_PATH=. {$environment} npm run {$command};
 CMD;
 
             passthru($consoleCommand);

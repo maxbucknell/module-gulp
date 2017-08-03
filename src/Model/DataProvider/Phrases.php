@@ -58,6 +58,6 @@ class Phrases implements DataProviderInterface
         $translate->setLocale($locale);
         $translate->loadData();
 
-        return $translate->getData();
+        return \json_encode($translate->getData(), JSON_FORCE_OBJECT);
     }
 }

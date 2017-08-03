@@ -21,7 +21,7 @@ class PostCss implements DataProviderInterface
 
     public function getData(StoreInterface $store)
     {
-        return $this->plugins;
+        return \json_encode($this->plugins, JSON_FORCE_OBJECT);
     }
 
 }

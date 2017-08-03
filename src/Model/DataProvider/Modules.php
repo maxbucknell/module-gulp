@@ -22,6 +22,6 @@ class Modules implements DataProviderInterface
 
     public function getData(StoreInterface $store)
     {
-        return $this->componentRegistrar->getPaths(ComponentRegistrar::MODULE);
+        return \json_encode($this->componentRegistrar->getPaths(ComponentRegistrar::MODULE), JSON_FORCE_OBJECT);
     }
 }

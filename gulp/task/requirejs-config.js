@@ -30,10 +30,5 @@ glob('*', { cwd })
     )
     .then((promises) => Promise.all(promises))
     .then((files) => _.map(files, wrap).join('\n'))
-    .then((result) => mkdirp(magentoData.requirejs_config_dir).then(() => result))
-    .then((result) => writeFile(
-        path.join(magentoData.requirejs_config_dir, 'requirejs-config.js'),
-        result,
-        'utf-8'
-    ))
-    .catch((x) => console.log(x));
+    .then((result) => console.log(result))
+    .catch((x) => null);

@@ -42,7 +42,7 @@
             <package name="concurrently" version="latest" />
         </dependencies>
 
-        <command>concurrently "npm run flatten:static" "npm run flatten:templates"</command>
+        <command>concurrently "npm run flatten:static" "npm run flatten:templates" "npm run flatten:requirejs-config"</command>
     </task>
 
     <task name="clean:build">
@@ -89,15 +89,31 @@
 
     <task name="copy">
         <dependencies>
-            <package name="fs-extra" version="latest" />
+            <package name="cpx" version="latest" />
         </dependencies>
-        <command>node MaxBucknell_Gulp/task/copy.js css csv eot gif htc htm html ico jbf jpg json less map md png sass scss svg swf ttf txt woff woff2</command>
+        <command>cpx "$BUILD_DIR/flat/static/**/*.{css,csv,eot,gif,htc,htm,html,ico,jbf,jpeg,jpg,js,json,less,map,md,png,sass,scss,svg,swf,ttf,txt,woff,woff2}" $OUTPUT_DIR --dereference</command>
     </task>
 
     <task name="requirejs-config">
         <dependencies>
             <package name="glob" version="latest" />
         </dependencies>
-        <command>node MaxBucknell_Gulp/task/requirejs-config.js</command>
+        <command>mkdir -p "$REQUIREJS_CONFIG_DIR" &amp;&amp; node MaxBucknell_Gulp/task/requirejs-config.js &gt; "$REQUIREJS_CONFIG_DIR/requirejs-config.js"</command>
+    </task>
+
+    <task name="babel">
+        <dependencies>
+            <package name="babel-cli" version="latest" />
+            <package name="babel-preset-env" version="latest" />
+        </dependencies>
+        <command>babel "$BUILD_DIR/flat/static" --out-dir "$OUTPUT_DIR" --extensions ".es"</command>
+    </task>
+
+    <task name="js">
+        <command>concurrently "npm run babel"</command>
+    </task>
+
+    <task name="build">
+        <command>concurrently "npm run copy" "npm run css" "npm run requirejs-config" "npm run js"</command>
     </task>
 </gulp>

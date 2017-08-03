@@ -33,7 +33,7 @@ class Config implements DataProviderInterface
             $result[$configField] = $this->config->getValue($configField, 'stores', $store->getId());
         }
 
-        return $result;
+        return \json_encode($result, JSON_FORCE_OBJECT);
     }
 
 }
