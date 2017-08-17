@@ -91,7 +91,7 @@
         <dependencies>
             <package name="cpx" version="latest" />
         </dependencies>
-        <command>cpx "$BUILD_DIR/flat/static/**/*.{css,csv,eot,gif,htc,htm,html,ico,jbf,jpeg,jpg,js,json,less,map,md,png,sass,scss,svg,swf,ttf,txt,woff,woff2}" $OUTPUT_DIR --dereference</command>
+        <command>cpx "$BUILD_DIR"'/flat/static/**/*.{css,csv,eot,gif,htc,htm,html,ico,jbf,jpeg,jpg,js,json,less,map,md,png,sass,scss,svg,swf,ttf,txt,woff,woff2}' "$OUTPUT_DIR" --dereference</command>
     </task>
 
     <task name="requirejs-config">
