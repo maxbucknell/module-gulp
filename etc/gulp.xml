@@ -103,14 +103,22 @@
 
     <task name="babel">
         <dependencies>
-            <package name="babel-cli" version="latest" />
-            <package name="babel-preset-env" version="latest" />
+            <package name="babel-cli" version="7.0.0-alpha.20" />
+            <package name="babel-preset-env" version="2.0.0-alpha.20" />
         </dependencies>
-        <command>babel "$BUILD_DIR/flat/static" --out-dir "$OUTPUT_DIR" --extensions ".es"</command>
+        <command>babel --out-dir "$OUTPUT_DIR" --extensions ".es" --config-file "./MaxBucknell_Gulp/babel/babelrc" "$BUILD_DIR/flat/static"</command>
     </task>
 
     <task name="js">
         <command>concurrently "npm run babel"</command>
+    </task>
+
+    <task name="minify">
+        <dependencies>
+            <package name="babel-cli" version="7.0.0-alpha.20" />
+            <package name="babel-preset-minify" version="latest" />
+        </dependencies>
+        <command>babel --out-dir="$OUTPUT_DIR" --presets="minify" --extensions=".js" --ignore="$OUTPUT_DIR/Mageplaza_Core,$OUTPUT_DIR/prototype,$OUTPUT_DIR/extjs,$OUTPUT_DIR/legacy-build.min.js,$OUTPUT_DIR/mage/adminhtml,$OUTPUT_DIR/scriptaculous,$OUTPUT_DIR/tiny_mce" "$OUTPUT_DIR"</command>
     </task>
 
     <task name="build">
