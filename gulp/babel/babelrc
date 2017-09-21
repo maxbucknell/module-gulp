@@ -3,7 +3,7 @@
     [
       "env",
       {
-        "targets": "> 1%"
+        "targets": ["> 1%", "iOS 9"]
       }
     ]
   ]
