@@ -67,7 +67,7 @@
 
     <task name="less">
         <dependencies>
-            <package name="less" version="latest" />
+            <package name="less" version="^2.7.2" />
             <package name="spawn-command" version="latest" />
             <package name="concurrently" version="latest" />
         </dependencies>
