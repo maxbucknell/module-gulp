@@ -124,4 +124,31 @@
     <task name="build">
         <command>concurrently "npm run copy" "npm run css" "npm run requirejs-config" "npm run js"</command>
     </task>
+
+    <task name="watch">
+        <dependencies>
+            <package name="chokidar-cli" version="latest" />
+        </dependencies>
+        <command>concurrently "npm run watch:less" "npm run watch:copy" "npm run watch:js" "npm run watch:requirejs-config"</command>
+    </task>
+
+    <task name="watch:less">
+        <command>chokidar -s "$BUILD_DIR"'/flat/static/**/*.less}' -c 'npm run css'</command>
+    </task>
+
+    <task name="watch:copy">
+        <command>chokidar -s "$BUILD_DIR"'/flat/static/**/*.{css,csv,eot,gif,htc,htm,html,ico,jbf,jpeg,jpg,js,json,less,map,md,png,sass,scss,svg,swf,ttf,txt,woff,woff2}' -c 'cpx "{path}" "$(dirname $(echo "{path}" | sed "s $BUILD_DIR/flat/static $OUTPUT_DIR "))" --dereference'</command>
+    </task>
+
+    <task name="watch:js">
+        <command>chokidar -s "$BUILD_DIR"'/flat/static/**/*.es' -c 'npm run js'</command>
+    </task>
+
+    <task name="watch:requirejs-config">
+        <command>chokidar -s "$BUILD_DIR"'/flat/requirejs-config/**/*' -c 'npm run requirejs-config'</command>
+    </task>
+
+    <task name="start">
+        <command>npm run clean &amp;&amp; npm run flatten &amp;&amp; npm run build &amp;&amp; npm run watch</command>
+    </task>
 </gulp>
