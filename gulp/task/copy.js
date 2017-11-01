@@ -1,6 +1,6 @@
 const fs = require('fs-extra');
 const path = require('path');
-const magentoData = require('MaxBucknell_Gulp/lib/magento-data');
+const magentoData = require('prefab/MaxBucknell_Gulp/lib/magento-data');
 const _ = require('lodash');
 
 const validExtensions = _.map(

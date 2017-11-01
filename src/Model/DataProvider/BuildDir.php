@@ -25,7 +25,7 @@ class BuildDir implements DataProviderInterface
         $root = $this->filesystem->getRootDirectory();
         $storeCode = $store->getCode();
 
-        return "{$root}/var/maxbucknell/build/{$storeCode}";
+        return "{$root}/pub/static/prefab_build/{$storeCode}";
     }
 
 

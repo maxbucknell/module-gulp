@@ -45,7 +45,7 @@ class Sources implements BuilderInterface
     {
         $root = $this->filesystem->getLocation();
         $sourceDir = "{$path}/gulp";
-        $destinationDir = "{$root}/{$name}";
+        $destinationDir = "{$root}/prefab/{$name}";
 
         if ($this->filesystem->getFilesystem()->has($destinationDir)) {
             $this->filesystem->getFilesystem()->deleteDir($destinationDir);

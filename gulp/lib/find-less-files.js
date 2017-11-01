@@ -1,9 +1,9 @@
-const findLayoutDirectories = require('MaxBucknell_Gulp/lib/find-layout-directories');
+const findLayoutDirectories = require('prefab/MaxBucknell_Gulp/lib/find-layout-directories');
 const glob = require('glob');
 const _ = require('lodash');
 const fs = require('fs');
 const path = require('path');
-const magentoData = require('MaxBucknell_Gulp/lib/magento-data');
+const magentoData = require('prefab/MaxBucknell_Gulp/lib/magento-data');
 
 const cssPattern = /<css\s+src="([^"]+)\.css"/;
 const removePattern = /<remove\s+src="([^"]+)\.css"/;

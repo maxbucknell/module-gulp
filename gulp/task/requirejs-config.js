@@ -1,4 +1,4 @@
-const magentoData = require('MaxBucknell_Gulp/lib/magento-data');
+const magentoData = require('prefab/MaxBucknell_Gulp/lib/magento-data');
 const path = require('path');
 const fs = require('fs');
 const promisify = require('util').promisify;
