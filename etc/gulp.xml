@@ -106,7 +106,7 @@
             <package name="babel-cli" version="^6.26" />
             <package name="babel-preset-env" version="^1.6.1" />
         </dependencies>
-        <command>babel --out-dir "$OUTPUT_DIR" --extensions ".es" --config-file "./prefab/MaxBucknell_Gulp/babel/babelrc" "$BUILD_DIR/flat/static"</command>
+        <command>cp ./prefab/MaxBucknell_Gulp/babel/babelrc ./.babelrc &amp;&amp; babel --out-dir "$OUTPUT_DIR" --extensions ".es" "$BUILD_DIR/flat/static" &amp;&amp; rm ./.babelrc</command>
     </task>
 
     <task name="js">
