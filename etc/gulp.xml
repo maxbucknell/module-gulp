@@ -98,7 +98,7 @@
         <dependencies>
             <package name="glob" version="latest" />
         </dependencies>
-        <command>mkdir -p "$REQUIREJS_CONFIG_DIR" &amp;&amp; node prefab/MaxBucknell_Gulp/task/requirejs-config.js &gt; "$REQUIREJS_CONFIG_DIR/requirejs-config.js"</command>
+        <command>node prefab/MaxBucknell_Gulp/task/requirejs-config.js &gt; "$OUTPUT_DIR/requirejs-config.js"</command>
     </task>
 
     <task name="babel">

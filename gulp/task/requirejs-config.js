@@ -30,5 +30,13 @@ glob('*', { cwd })
     )
     .then((promises) => Promise.all(promises))
     .then((files) => _.map(files, wrap).join('\n'))
+    .then((config) => {
+        return Promise.all([
+            readFile(path.join(magentoData.build_dir, 'flat/static/requirejs/require.js'), 'utf-8').catch((x) => console.log(x)),
+            readFile(path.join(magentoData.build_dir, 'flat/static/mage/requirejs/mixins.js'), 'utf-8').catch((x) => console.log(x)),
+            Promise.resolve(config)
+        ])
+    })
+    .then((files) => files.join('\n'))
     .then((result) => console.log(result))
     .catch((x) => null);
