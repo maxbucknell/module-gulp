@@ -1,6 +1,6 @@
 <?php
 
-namespace MaxBucknell\Gulp\Api;
+namespace MaxBucknell\Prefab\Api;
 
 use Magento\Store\Api\Data\StoreInterface;
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace MaxBucknell\Gulp\Model\Builder;
+namespace MaxBucknell\Prefab\Model\Builder;
 
-use MaxBucknell\Gulp\Api\BuilderInterface;
-use MaxBucknell\Gulp\Model\Generator\PackageJson as PackageJsonGenerator;
-use MaxBucknell\Gulp\Model\Filesystem;
-use MaxBucknell\Gulp\Model\Config\Data as GulpConfig;
+use MaxBucknell\Prefab\Api\BuilderInterface;
+use MaxBucknell\Prefab\Model\Generator\PackageJson as PackageJsonGenerator;
+use MaxBucknell\Prefab\Model\Filesystem;
+use MaxBucknell\Prefab\Model\Config\Data as GulpConfig;
 
 class PackageJson implements BuilderInterface
 {

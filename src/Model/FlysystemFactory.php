@@ -1,6 +1,6 @@
 <?php
 
-namespace MaxBucknell\Gulp\Model;
+namespace MaxBucknell\Prefab\Model;
 
 
 use League\Flysystem\Adapter\Local;

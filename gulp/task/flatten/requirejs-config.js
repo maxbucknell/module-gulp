@@ -1,5 +1,5 @@
-const findDirectories = require('prefab/MaxBucknell_Gulp/lib/find-directories');
-const magentoData = require('prefab/MaxBucknell_Gulp/lib/magento-data');
+const findDirectories = require('prefab/MaxBucknell_Prefab/lib/find-directories');
+const magentoData = require('prefab/MaxBucknell_Prefab/lib/magento-data');
 const _ = require('lodash');
 const fs = require('fs');
 const path = require('path');

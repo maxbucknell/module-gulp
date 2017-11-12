@@ -1,13 +1,13 @@
 <?php
 
-namespace MaxBucknell\Gulp\Model\DataProvider;
+namespace MaxBucknell\Prefab\Model\DataProvider;
 
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\View\Design\Theme\FlyweightFactory;
 use Magento\Store\Api\Data\StoreInterface;
-use MaxBucknell\Gulp\Api\DataProviderInterface;
-use MaxBucknell\Gulp\Model\Filesystem;
+use MaxBucknell\Prefab\Api\DataProviderInterface;
+use MaxBucknell\Prefab\Model\Filesystem;
 
 class RequirejsConfigDir implements DataProviderInterface
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace MaxBucknell\Gulp\Model\Builder;
+namespace MaxBucknell\Prefab\Model\Builder;
 
 use Magento\Framework\Component\ComponentRegistrar;
-use MaxBucknell\Gulp\Api\BuilderInterface;
-use MaxBucknell\Gulp\Model\Filesystem;
+use MaxBucknell\Prefab\Api\BuilderInterface;
+use MaxBucknell\Prefab\Model\Filesystem;
 
 class Sources implements BuilderInterface
 {

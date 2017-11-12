@@ -1,4 +1,4 @@
-const magentoData = require('prefab/MaxBucknell_Gulp/lib/magento-data');
-const run = require('prefab/MaxBucknell_Gulp/lib/run');
+const magentoData = require('prefab/MaxBucknell_Prefab/lib/magento-data');
+const run = require('prefab/MaxBucknell_Prefab/lib/run');
 
-run(`postcss -r -c prefab/MaxBucknell_Gulp/postcss.config.js ${magentoData.output_dir}/**/*.css`);
+run(`postcss -r -c prefab/MaxBucknell_Prefab/postcss.config.js ${magentoData.output_dir}/**/*.css`);

@@ -1,9 +1,9 @@
 <?php
 
-namespace MaxBucknell\Gulp\Model;
+namespace MaxBucknell\Prefab\Model;
 
 use Magento\Store\Api\Data\StoreInterface;
-use MaxBucknell\Gulp\Api\DataProviderInterface;
+use MaxBucknell\Prefab\Api\DataProviderInterface;
 
 class DataProvider implements DataProviderInterface
 {

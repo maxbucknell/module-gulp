@@ -1,6 +1,6 @@
 <?php
 
-namespace MaxBucknell\Gulp\Model\Generator;
+namespace MaxBucknell\Prefab\Model\Generator;
 
 class PackageJson
 {
