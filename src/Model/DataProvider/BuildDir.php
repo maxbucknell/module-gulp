@@ -1,11 +1,11 @@
 <?php
 
-namespace MaxBucknell\Gulp\Model\DataProvider;
+namespace MaxBucknell\Prefab\Model\DataProvider;
 
 
 use Magento\Store\Api\Data\StoreInterface;
-use MaxBucknell\Gulp\Api\DataProviderInterface;
-use MaxBucknell\Gulp\Model\Filesystem;
+use MaxBucknell\Prefab\Api\DataProviderInterface;
+use MaxBucknell\Prefab\Model\Filesystem;
 
 class BuildDir implements DataProviderInterface
 {
@@ -25,7 +25,7 @@ class BuildDir implements DataProviderInterface
         $root = $this->filesystem->getRootDirectory();
         $storeCode = $store->getCode();
 
-        return "{$root}/var/maxbucknell/build/{$storeCode}";
+        return "{$root}/pub/static/prefab_build/{$storeCode}";
     }
 
 

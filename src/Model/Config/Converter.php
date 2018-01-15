@@ -1,5 +1,5 @@
 <?php
-namespace MaxBucknell\Gulp\Model\Config;
+namespace MaxBucknell\Prefab\Model\Config;
 
 use Magento\Framework\Config\ConverterInterface;
 
@@ -14,13 +14,13 @@ class Converter implements ConverterInterface
         $xpath = new \DOMXPath($source);
         $result = [];
 
-        $result['tasks'] = $this->collectTasks($xpath);
+        $result['scripts'] = $this->collectScripts($xpath);
         $result['dependencies'] = $this->collectDependencies($xpath);
 
         return $result;
     }
 
-    public function collectTasks(\DOMXPath $xpath)
+    public function collectScripts(\DOMXPath $xpath)
     {
         $result = [];
 
@@ -28,19 +28,13 @@ class Converter implements ConverterInterface
             /** @var \DOMElement $taskNode */
 
             $taskName = $taskNode->getAttribute('name');
-            $task = [
-                'subtasks' => [],
-                'source' => null,
-            ];
+            $command = null;
 
             foreach ($taskNode->childNodes as $childNode) {
                 /** @var \DOMNode $childNode */
                 switch ($childNode->nodeName) {
-                    case 'subtasks':
-                        $task['subtasks'] = \iterator_to_array($this->collectSubtasks($childNode));
-                        break;
-                    case 'source':
-                        $task['source'] = $childNode->textContent;
+                    case 'command':
+                        $command = $childNode->textContent;
                     case 'dependencies':
                     case '#text':
                     case '#comment':
@@ -51,18 +45,10 @@ class Converter implements ConverterInterface
                 }
             }
 
-            $result[$taskName] = $task;
+            $result[$taskName] = $command;
         }
 
         return $result;
-    }
-
-    public function collectSubtasks(\DOMElement $subtasks)
-    {
-        foreach ($subtasks->getElementsByTagName('task') as $subtask) {
-            /** @var \DOMElement $subtask */
-            yield $subtask->getAttribute('name');
-        }
     }
 
     public function collectDependencies(\DOMXPath $xpath)

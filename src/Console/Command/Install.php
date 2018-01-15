@@ -1,9 +1,9 @@
 <?php
 
-namespace MaxBucknell\Gulp\Console\Command;
+namespace MaxBucknell\Prefab\Console\Command;
 
 
-use MaxBucknell\Gulp\Model\Filesystem;
+use MaxBucknell\Prefab\Model\Filesystem;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -28,7 +28,7 @@ class Install extends Command
 
     protected function configure()
     {
-        $this->setName('setup:gulp:install');
+        $this->setName('setup:prefab:install');
         $this->setDescription('Install all NPM dependencies');
         $this->addOption(
             'npm',
@@ -41,10 +41,9 @@ class Install extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
 
-        $executable = $input->getOption('npm') ? 'npm' : 'yarn';
         $directory = $this->filesystem->getAbsoluteLocation();
 
         chdir($directory);
-        passthru("$executable install");
+        passthru("npm update");
     }
 }

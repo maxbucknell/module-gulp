@@ -3,7 +3,7 @@
 namespace Model\Generator;
 
 
-use MaxBucknell\Gulp\Model\Generator\PackageJson;
+use MaxBucknell\Prefab\Model\Generator\PackageJson;
 
 class PackageJsonTest extends \PHPUnit_Framework_TestCase
 {
@@ -25,10 +25,10 @@ class PackageJsonTest extends \PHPUnit_Framework_TestCase
         $actual = $this->generator->generate();
         $expected = <<<JSON
 {
-    "name": "@maxbucknell/magento-gulp",
+    "name": "@maxbucknell/magento-prefab",
     "version": "1.0.0",
     "description": "",
-    "main": "gulpfile.js",
+    "main": "prefabfile.js",
     "author": "",
     "license": "MIT",
     "dependencies": {}
@@ -48,20 +48,20 @@ JSON;
     public function it_should_generate_a_dependency()
     {
         $config = [
-            'gulp' => '^3.9.1'
+            'prefab' => '^3.9.1'
         ];
 
         $actual = $this->generator->generate($config);
         $expected = <<<JSON
 {
-    "name": "@maxbucknell/magento-gulp",
+    "name": "@maxbucknell/magento-prefab",
     "version": "1.0.0",
     "description": "",
-    "main": "gulpfile.js",
+    "main": "prefabfile.js",
     "author": "",
     "license": "MIT",
     "dependencies": {
-        "gulp": "^3.9.1"
+        "prefab": "^3.9.1"
     }
 }
 JSON;
@@ -79,21 +79,21 @@ JSON;
     public function it_should_generate_multiple_dependencies()
     {
         $config = [
-            'gulp' => '^3.9.1',
+            'prefab' => '^3.9.1',
             'glob' => '^7.1.1'
         ];
 
         $actual = $this->generator->generate($config);
         $expected = <<<JSON
 {
-    "name": "@maxbucknell/magento-gulp",
+    "name": "@maxbucknell/magento-prefab",
     "version": "1.0.0",
     "description": "",
-    "main": "gulpfile.js",
+    "main": "prefabfile.js",
     "author": "",
     "license": "MIT",
     "dependencies": {
-        "gulp": "^3.9.1",
+        "prefab": "^3.9.1",
         "glob": "^7.1.1"
     }
 }

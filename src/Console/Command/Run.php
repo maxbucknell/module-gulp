@@ -1,12 +1,12 @@
 <?php
 
-namespace MaxBucknell\Gulp\Console\Command;
+namespace MaxBucknell\Prefab\Console\Command;
 
 
 use Magento\Framework\App\State;
 use Magento\Store\Api\StoreRepositoryInterface;
-use MaxBucknell\Gulp\Api\DataProviderInterface;
-use MaxBucknell\Gulp\Model\Filesystem;
+use MaxBucknell\Prefab\Api\DataProviderInterface;
+use MaxBucknell\Prefab\Model\Filesystem;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -52,8 +52,8 @@ class Run extends Command
 
     protected function configure()
     {
-        $this->setName('setup:gulp:run');
-        $this->setDescription('Run a Gulp command');
+        $this->setName('setup:prefab:run');
+        $this->setDescription('Run a Prefab command');
         $this->addOption(
             'store',
             's',
@@ -62,10 +62,10 @@ class Run extends Command
             'default'
         );
         $this->addArgument(
-            'gulp-command',
-            InputArgument::OPTIONAL,
-            'Command to run',
-            'default'
+            'commands',
+            InputArgument::IS_ARRAY,
+            'Commands to run',
+            ['build']
         );
     }
 
@@ -81,16 +81,23 @@ class Run extends Command
         $store = $this->storeRepository->get($storeCode);
         $data = $this->dataProvider->getData($store);
 
-        $encodedData = \escapeshellarg(\json_encode($data, JSON_FORCE_OBJECT));
-        $gulpCommand = $input->getArgument('gulp-command');
+        $environment = '';
+        foreach ($data as $var => $value) {
+            $sanitised = \escapeshellarg($value);
+            $environment .= "{$var}={$sanitised} ";
+        }
+
+        $commands = $input->getArgument('commands');
 
         $directory = $this->filesystem->getAbsoluteLocation();
         chdir($directory);
 
-        $command = <<<CMD
-NODE_PATH=. ./node_modules/.bin/gulp --magento={$encodedData} {$gulpCommand};
+        foreach ($commands as $command) {
+            $consoleCommand = <<<CMD
+NODE_PATH=. {$environment} npm run {$command};
 CMD;
 
-        passthru($command);
+            passthru($consoleCommand);
+        }
     }
 }

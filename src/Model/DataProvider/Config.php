@@ -1,10 +1,10 @@
 <?php
 
-namespace MaxBucknell\Gulp\Model\DataProvider;
+namespace MaxBucknell\Prefab\Model\DataProvider;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Store\Api\Data\StoreInterface;
-use MaxBucknell\Gulp\Api\DataProviderInterface;
+use MaxBucknell\Prefab\Api\DataProviderInterface;
 
 class Config implements DataProviderInterface
 {
@@ -33,7 +33,7 @@ class Config implements DataProviderInterface
             $result[$configField] = $this->config->getValue($configField, 'stores', $store->getId());
         }
 
-        return $result;
+        return \json_encode($result, JSON_FORCE_OBJECT);
     }
 
 }

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<prefab
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:module:MaxBucknell_Prefab:etc/prefab.xsd"
+>
+    <task name="env">
+        <command>env</command>
+    </task>
+
+    <task name="flatten:static">
+        <dependencies>
+            <package name="lodash" version="latest" />
+            <package name="glob" version="latest" />
+            <package name="mkdirp" version="latest" />
+        </dependencies>
+
+        <command>node prefab/MaxBucknell_Prefab/task/flatten/static.js</command>
+    </task>
+
+    <task name="flatten:templates">
+        <dependencies>
+            <package name="lodash" version="latest" />
+            <package name="glob" version="latest" />
+            <package name="mkdirp" version="latest" />
+        </dependencies>
+
+        <command>node prefab/MaxBucknell_Prefab/task/flatten/templates.js</command>
+    </task>
+
+    <task name="flatten:requirejs-config">
+        <dependencies>
+            <package name="lodash" version="latest" />
+            <package name="glob" version="latest" />
+            <package name="mkdirp" version="latest" />
+        </dependencies>
+
+        <command>node prefab/MaxBucknell_Prefab/task/flatten/requirejs-config.js</command>
+    </task>
+
+    <task name="flatten">
+        <dependencies>
+            <package name="concurrently" version="latest" />
+        </dependencies>
+
+        <command>concurrently "npm run flatten:static" "npm run flatten:templates" "npm run flatten:requirejs-config"</command>
+    </task>
+
+    <task name="clean:build">
+        <dependencies>
+            <package name="rimraf" version="latest" />
+        </dependencies>
+
+        <command>node prefab/MaxBucknell_Prefab/task/clean/build.js</command>
+    </task>
+
+    <task name="clean:pub">
+        <dependencies>
+            <package name="rimraf" version="latest" />
+        </dependencies>
+
+        <command>node prefab/MaxBucknell_Prefab/task/clean/pub.js</command>
+    </task>
+
+    <task name="clean">
+        <command>concurrently "npm run clean:build" "npm run clean:pub"</command>
+    </task>
+
+    <task name="less">
+        <dependencies>
+            <package name="less" version="^2.7.2" />
+            <package name="spawn-command" version="latest" />
+            <package name="concurrently" version="latest" />
+        </dependencies>
+        <command>node prefab/MaxBucknell_Prefab/task/less.js 'lessc --source-map-map-inline --plugin=./prefab/MaxBucknell_Prefab/less/magento-import.js {{input}} > {{output}}'</command>
+    </task>
+
+    <task name="css">
+        <command>concurrently "npm run less"</command>
+    </task>
+
+    <task name="postcss">
+        <dependencies>
+            <package name="postcss-cli" version="latest" />
+            <package name="cssnano" version="latest" />
+            <package name="autoprefixer" version="latest" />
+        </dependencies>
+        <command>node prefab/MaxBucknell_Prefab/task/postcss.js</command>
+    </task>
+
+    <task name="copy">
+        <dependencies>
+            <package name="cpx" version="latest" />
+        </dependencies>
+        <command>cpx "$BUILD_DIR"'/flat/static/**/*.{css,csv,eot,gif,htc,htm,html,ico,jbf,jpeg,jpg,js,json,less,map,md,png,sass,scss,svg,swf,ttf,txt,woff,woff2}' "$OUTPUT_DIR" --dereference</command>
+    </task>
+
+    <task name="requirejs-config">
+        <dependencies>
+            <package name="glob" version="latest" />
+        </dependencies>
+        <command>node prefab/MaxBucknell_Prefab/task/requirejs-config.js &gt; "$OUTPUT_DIR/requirejs-config.js"</command>
+    </task>
+
+    <task name="babel">
+        <dependencies>
+            <package name="babel-cli" version="^6.26" />
+            <package name="babel-preset-env" version="^1.6.1" />
+        </dependencies>
+        <command>cp ./prefab/MaxBucknell_Prefab/babel/babelrc ./.babelrc &amp;&amp; babel --out-dir "$OUTPUT_DIR" --extensions ".es" "$BUILD_DIR/flat/static" &amp;&amp; rm ./.babelrc</command>
+    </task>
+
+    <task name="js">
+        <command>concurrently "npm run babel"</command>
+    </task>
+
+    <task name="minify">
+        <dependencies>
+            <package name="babel-cli" version="^6.26.0" />
+            <package name="babel-preset-minify" version="latest" />
+        </dependencies>
+        <command>cp ./prefab/MaxBucknell_Prefab/minify-babelrc ./.babelrc &amp;&amp; babel --out-dir="$OUTPUT_DIR" --extensions=".js" --ignore="$OUTPUT_DIR/Magento_Swagger/**/*,$OUTPUT_DIR/underscore.js,$OUTPUT_DIR/requirejs/require.js,$OUTPUT_DIR/Mageplaza_Core,$OUTPUT_DIR/prototype,$OUTPUT_DIR/extjs,$OUTPUT_DIR/legacy-build.min.js,$OUTPUT_DIR/mage/adminhtml,$OUTPUT_DIR/scriptaculous,$OUTPUT_DIR/tiny_mce" "$OUTPUT_DIR" &amp;&amp; rm ./.babelrc</command>
+    </task>
+
+    <task name="build">
+        <command>concurrently "npm run copy" "npm run css" "npm run js" &amp;&amp; npm run requirejs-config</command>
+    </task>
+
+    <task name="watch">
+        <dependencies>
+            <package name="chokidar-cli" version="latest" />
+        </dependencies>
+        <command>concurrently "npm run watch:less" "npm run watch:copy" "npm run watch:js" "npm run watch:requirejs-config"</command>
+    </task>
+
+    <task name="watch:less">
+        <command>chokidar -s "$BUILD_DIR"'/flat/static/**/*.less}' -c 'npm run css'</command>
+    </task>
+
+    <task name="watch:copy">
+        <command>chokidar -s "$BUILD_DIR"'/flat/static/**/*.{css,csv,eot,gif,htc,htm,html,ico,jbf,jpeg,jpg,js,json,less,map,md,png,sass,scss,svg,swf,ttf,txt,woff,woff2}' -c 'cpx "{path}" "$(dirname $(echo "{path}" | sed "s $BUILD_DIR/flat/static $OUTPUT_DIR "))" --dereference'</command>
+    </task>
+
+    <task name="watch:js">
+        <command>chokidar -s "$BUILD_DIR"'/flat/static/**/*.es' -c 'npm run js'</command>
+    </task>
+
+    <task name="watch:requirejs-config">
+        <command>chokidar -s "$BUILD_DIR"'/flat/requirejs-config/**/*' -c 'npm run requirejs-config'</command>
+    </task>
+
+    <task name="start">
+        <command>npm run clean &amp;&amp; npm run flatten &amp;&amp; npm run build &amp;&amp; npm run watch</command>
+    </task>
+</prefab>

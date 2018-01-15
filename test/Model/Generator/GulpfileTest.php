@@ -1,29 +1,29 @@
 <?php
 
-namespace MaxBucknell\Gulp\Test\Model\Generator;
+namespace MaxBucknell\Prefab\Test\Model\Generator;
 
-use MaxBucknell\Gulp\Model\Generator\Gulpfile;
+use MaxBucknell\Prefab\Model\Generator\Prefabfile;
 
-class GulpfileTest extends \PHPUnit_Framework_TestCase
+class PrefabfileTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @const Gulpfile
+     * @const Prefabfile
      */
     private $generator;
 
     public function setUp()
     {
-        $this->generator = new Gulpfile();
+        $this->generator = new Prefabfile();
     }
 
     /**
      * @test
      */
-    public function it_should_generate_a_gulpfile()
+    public function it_should_generate_a_prefabfile()
     {
         $actual = $this->generator->generate();
         $expected = <<<JS
-const gulp = require('gulp');
+const prefab = require('prefab');
 const minimist = require('minimist');
 
 const magento = JSON.parse(minimist(
@@ -41,7 +41,7 @@ JS;
         $this->assertEquals(
             $expected,
             $actual,
-            'Empty gulpfile is not correct'
+            'Empty prefabfile is not correct'
         );
     }
 
@@ -58,7 +58,7 @@ JS;
         ];
         $actual = $this->generator->generate($config);
         $expected = <<<JS
-const gulp = require('gulp');
+const prefab = require('prefab');
 const minimist = require('minimist');
 
 const magento = JSON.parse(minimist(
@@ -71,7 +71,7 @@ const magento = JSON.parse(minimist(
     }
 ).magento);
 
-gulp.task('foo', [], function () {
+prefab.task('foo', [], function () {
     return require('bar.js')(magento);
 });
 JS;
@@ -100,7 +100,7 @@ JS;
         ];
         $actual = $this->generator->generate($config);
         $expected = <<<JS
-const gulp = require('gulp');
+const prefab = require('prefab');
 const minimist = require('minimist');
 
 const magento = JSON.parse(minimist(
@@ -113,11 +113,11 @@ const magento = JSON.parse(minimist(
     }
 ).magento);
 
-gulp.task('foo', [], function () {
+prefab.task('foo', [], function () {
     return require('bar.js')(magento);
 });
 
-gulp.task('baz', [], function () {
+prefab.task('baz', [], function () {
     return require('qux.js')(magento);
 });
 JS;
@@ -142,7 +142,7 @@ JS;
         ];
         $actual = $this->generator->generate($config);
         $expected = <<<JS
-const gulp = require('gulp');
+const prefab = require('prefab');
 const minimist = require('minimist');
 
 const magento = JSON.parse(minimist(
@@ -155,7 +155,7 @@ const magento = JSON.parse(minimist(
     }
 ).magento);
 
-gulp.task('foo', ['bar', 'baz'], function () {
+prefab.task('foo', ['bar', 'baz'], function () {
     return require('qux.js')(magento);
 });
 JS;
@@ -180,7 +180,7 @@ JS;
         ];
         $actual = $this->generator->generate($config);
         $expected = <<<JS
-const gulp = require('gulp');
+const prefab = require('prefab');
 const minimist = require('minimist');
 
 const magento = JSON.parse(minimist(
@@ -193,7 +193,7 @@ const magento = JSON.parse(minimist(
     }
 ).magento);
 
-gulp.task('foo', [], function () {
+prefab.task('foo', [], function () {
     return true;
 });
 JS;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-    <xs:element name="gulp">
+    <xs:element name="prefab">
         <xs:complexType>
             <xs:sequence>
                 <xs:element minOccurs="0" maxOccurs="unbounded" name="task" type="taskType" />
@@ -10,31 +10,20 @@
 
     <xs:complexType name="taskType">
         <xs:sequence>
-            <xs:element name="dependencies" type="dependenciesType" minOccurs="0" maxOccurs="1" />
-            <xs:element name="subtasks" type="subtasksType" minOccurs="0" maxOccurs="1" />
-            <xs:element name="source" type="xs:string" minOccurs="0" maxOccurs="1" />
+            <xs:element name="dependencies" type="dependenciesType" minOccurs="0" />
+            <xs:element name="command" type="xs:string" />
         </xs:sequence>
         <xs:attribute name="name" type="xs:string" use="required" />
     </xs:complexType>
 
     <xs:complexType name="dependenciesType">
         <xs:sequence>
-            <xs:element name="package" type="packageType" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element name="package" type="packageType" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="packageType">
         <xs:attribute name="name" type="xs:string" use="required" />
         <xs:attribute name="version" type="xs:string" use="required" />
-    </xs:complexType>
-
-    <xs:complexType name="subtasksType">
-        <xs:sequence>
-            <xs:element name="task" type="subtaskType" minOccurs="1" maxOccurs="unbounded"/>
-        </xs:sequence>
-    </xs:complexType>
-
-    <xs:complexType name="subtaskType">
-        <xs:attribute name="name" type="xs:string" use="required" />
     </xs:complexType>
 </xs:schema>

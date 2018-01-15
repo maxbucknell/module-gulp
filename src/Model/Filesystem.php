@@ -1,5 +1,5 @@
 <?php
-namespace MaxBucknell\Gulp\Model;
+namespace MaxBucknell\Prefab\Model;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
 
@@ -38,12 +38,10 @@ class Filesystem
 
     public function getLocation()
     {
-        $var = $this->directoryList->getPath(DirectoryList::VAR_DIR);
-        $path = $this->getRelativeDirectory($var);
+        $dir= $this->directoryList->getPath(DirectoryList::STATIC_VIEW);
+        $path = $this->getRelativeDirectory($dir);
 
-        $subdirectory = "maxbucknell/gulp";
-
-        return $path . '/' . $subdirectory;
+        return $path;
     }
 
     /**

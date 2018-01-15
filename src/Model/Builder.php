@@ -1,8 +1,8 @@
 <?php
 
-namespace MaxBucknell\Gulp\Model;
+namespace MaxBucknell\Prefab\Model;
 
-use MaxBucknell\Gulp\Api\BuilderInterface;
+use MaxBucknell\Prefab\Api\BuilderInterface;
 
 class Builder implements BuilderInterface
 {

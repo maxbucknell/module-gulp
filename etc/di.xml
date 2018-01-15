@@ -1,36 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="MaxBucknell\Gulp\Api\BuilderInterface" type="MaxBucknell\Gulp\Model\Builder" />
-    <preference for="MaxBucknell\Gulp\Api\DataProviderInterface" type="MaxBucknell\Gulp\Model\DataProvider" />
+    <preference for="MaxBucknell\Prefab\Api\BuilderInterface" type="MaxBucknell\Prefab\Model\Builder" />
+    <preference for="MaxBucknell\Prefab\Api\DataProviderInterface" type="MaxBucknell\Prefab\Model\DataProvider" />
 
-    <type name="MaxBucknell\Gulp\Model\Builder">
+    <type name="MaxBucknell\Prefab\Model\Builder">
         <arguments>
             <argument name="builders" xsi:type="array">
-                <item name="package.json" xsi:type="object">MaxBucknell\Gulp\Model\Builder\PackageJson</item>
-                <item name="gulpfile" xsi:type="object">MaxBucknell\Gulp\Model\Builder\Gulpfile</item>
-                <item name="sources" xsi:type="object">MaxBucknell\Gulp\Model\Builder\Sources</item>
+                <item name="package.json" xsi:type="object">MaxBucknell\Prefab\Model\Builder\PackageJson</item>
+                <item name="sources" xsi:type="object">MaxBucknell\Prefab\Model\Builder\Sources</item>
             </argument>
         </arguments>
     </type>
 
-    <type name="MaxBucknell\Gulp\Model\DataProvider">
+    <type name="MaxBucknell\Prefab\Model\DataProvider">
         <arguments>
             <argument name="dataProviders" xsi:type="array">
-                <item name="store_code" xsi:type="object">MaxBucknell\Gulp\Model\DataProvider\StoreCode</item>
-                <item name="config" xsi:type="object">MaxBucknell\Gulp\Model\DataProvider\Config</item>
-                <item name="modules" xsi:type="object">MaxBucknell\Gulp\Model\DataProvider\Modules</item>
-                <item name="themes" xsi:type="object">MaxBucknell\Gulp\Model\DataProvider\Themes</item>
-                <item name="phrases" xsi:type="object">MaxBucknell\Gulp\Model\DataProvider\Phrases</item>
-                <item name="base_dir" xsi:type="object">MaxBucknell\Gulp\Model\DataProvider\BaseDir</item>
-                <item name="output_dir" xsi:type="object">MaxBucknell\Gulp\Model\DataProvider\OutputDir</item>
-                <item name="build_dir" xsi:type="object">MaxBucknell\Gulp\Model\DataProvider\BuildDir</item>
-                <item name="requirejs_config_dir" xsi:type="object">MaxBucknell\Gulp\Model\DataProvider\RequirejsConfigDir</item>
-                <item name="postcss" xsi:type="object">MaxBucknell\Gulp\Model\DataProvider\PostCss</item>
+                <item name="STORE_CODE" xsi:type="object">MaxBucknell\Prefab\Model\DataProvider\StoreCode</item>
+                <item name="CONFIG" xsi:type="object">MaxBucknell\Prefab\Model\DataProvider\Config</item>
+                <item name="MODULES" xsi:type="object">MaxBucknell\Prefab\Model\DataProvider\Modules</item>
+                <item name="THEMES" xsi:type="object">MaxBucknell\Prefab\Model\DataProvider\Themes</item>
+                <item name="PHRASES" xsi:type="object">MaxBucknell\Prefab\Model\DataProvider\Phrases</item>
+                <item name="BASE_DIR" xsi:type="object">MaxBucknell\Prefab\Model\DataProvider\BaseDir</item>
+                <item name="OUTPUT_DIR" xsi:type="object">MaxBucknell\Prefab\Model\DataProvider\OutputDir</item>
+                <item name="BUILD_DIR" xsi:type="object">MaxBucknell\Prefab\Model\DataProvider\BuildDir</item>
+                <item name="REQUIREJS_CONFIG_DIR" xsi:type="object">MaxBucknell\Prefab\Model\DataProvider\RequirejsConfigDir</item>
+                <item name="POSTCSS" xsi:type="object">MaxBucknell\Prefab\Model\DataProvider\PostCss</item>
             </argument>
         </arguments>
     </type>
 
-    <type name="MaxBucknell\Gulp\Model\DataProvider\Config">
+    <type name="MaxBucknell\Prefab\Model\DataProvider\Config">
         <arguments>
             <argument name="configFields" xsi:type="array">
                 <item name="general/locale/code" xsi:type="string">general/locale/code</item>
@@ -38,30 +37,30 @@
         </arguments>
     </type>
 
-    <type name="MaxBucknell\Gulp\Model\DataProvider\PostCss">
+    <type name="MaxBucknell\Prefab\Model\DataProvider\PostCss">
     </type>
 
-    <virtualType name="MaxBucknell\Gulp\Model\Config\Reader" type="Magento\Framework\Config\Reader\Filesystem">
+    <virtualType name="MaxBucknell\Prefab\Model\Config\Reader" type="Magento\Framework\Config\Reader\Filesystem">
         <arguments>
-            <argument name="converter" xsi:type="object">MaxBucknell\Gulp\Model\Config\Converter</argument>
-            <argument name="schemaLocator" xsi:type="object">MaxBucknell\Gulp\Model\Config\SchemaLocator</argument>
-            <argument name="fileName" xsi:type="string">gulp.xml</argument>
+            <argument name="converter" xsi:type="object">MaxBucknell\Prefab\Model\Config\Converter</argument>
+            <argument name="schemaLocator" xsi:type="object">MaxBucknell\Prefab\Model\Config\SchemaLocator</argument>
+            <argument name="fileName" xsi:type="string">prefab.xml</argument>
         </arguments>
     </virtualType>
 
-    <type name="MaxBucknell\Gulp\Model\Config\Data">
+    <type name="MaxBucknell\Prefab\Model\Config\Data">
         <arguments>
-            <argument name="reader" xsi:type="object">MaxBucknell\Gulp\Model\Config\Reader</argument>
-            <argument name="cacheId" xsi:type="string">maxbucknell_gulp_config_cache</argument>
+            <argument name="reader" xsi:type="object">MaxBucknell\Prefab\Model\Config\Reader</argument>
+            <argument name="cacheId" xsi:type="string">maxbucknell_prefab_config_cache</argument>
         </arguments>
     </type>
 
     <type name="Magento\Framework\Console\CommandList">
         <arguments>
             <argument name="commands" xsi:type="array">
-                <item name="gulpBuild" xsi:type="object">MaxBucknell\Gulp\Console\Command\Build</item>
-                <item name="gulpInstall" xsi:type="object">MaxBucknell\Gulp\Console\Command\Install</item>
-                <item name="gulpRun" xsi:type="object">MaxBucknell\Gulp\Console\Command\Run</item>
+                <item name="prefabBuild" xsi:type="object">MaxBucknell\Prefab\Console\Command\Build</item>
+                <item name="prefabInstall" xsi:type="object">MaxBucknell\Prefab\Console\Command\Install</item>
+                <item name="prefabRun" xsi:type="object">MaxBucknell\Prefab\Console\Command\Run</item>
             </argument>
         </arguments>
     </type>

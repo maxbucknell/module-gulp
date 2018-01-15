@@ -1,11 +1,11 @@
 <?php
 
-namespace MaxBucknell\Gulp\Model\DataProvider;
+namespace MaxBucknell\Prefab\Model\DataProvider;
 
 
 use Magento\Framework\Component\ComponentRegistrar;
 use Magento\Store\Api\Data\StoreInterface;
-use MaxBucknell\Gulp\Api\DataProviderInterface;
+use MaxBucknell\Prefab\Api\DataProviderInterface;
 
 class Modules implements DataProviderInterface
 {
@@ -22,6 +22,6 @@ class Modules implements DataProviderInterface
 
     public function getData(StoreInterface $store)
     {
-        return $this->componentRegistrar->getPaths(ComponentRegistrar::MODULE);
+        return \json_encode($this->componentRegistrar->getPaths(ComponentRegistrar::MODULE), JSON_FORCE_OBJECT);
     }
 }

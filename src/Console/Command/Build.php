@@ -1,9 +1,8 @@
 <?php
 
-namespace MaxBucknell\Gulp\Console\Command;
+namespace MaxBucknell\Prefab\Console\Command;
 
-
-use MaxBucknell\Gulp\Api\BuilderInterface;
+use MaxBucknell\Prefab\Api\BuilderInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -26,8 +25,8 @@ class Build extends Command
 
     protected function configure()
     {
-        $this->setName('setup:gulp:build');
-        $this->setDescription('Generate Gulpfile and required build assets.');
+        $this->setName('setup:prefab:build');
+        $this->setDescription('Generate Prefabfile and required build assets.');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)

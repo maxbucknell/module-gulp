@@ -1,6 +1,6 @@
 {
-    "name": "maxbucknell/module-gulp",
-    "description": "Gulp integration with Magento 2",
+    "name": "maxbucknell/module-prefab",
+    "description": "Prefab integration with Magento 2",
     "require": {
         "php": "~7.0.0",
         "league/flysystem": "^1.0.40"
@@ -12,8 +12,8 @@
             "registration.php"
         ],
         "psr-4": {
-            "MaxBucknell\\Gulp\\": "src/",
-            "MaxBucknell\\Gulp\\Test\\": "test/"
+            "MaxBucknell\\Prefab\\": "src/",
+            "MaxBucknell\\Prefab\\Test\\": "test/"
         }
     }
 }
