@@ -1,16 +1,15 @@
 <?php
 
-namespace MaxBucknell\Gulp\Model\Generator;
+namespace MaxBucknell\Prefab\Model\Generator;
 
 class PackageJson
 {
     public function generate($config = [])
     {
         $result = [
-            'name' => '@maxbucknell/magento-gulp',
+            'name' => '@maxbucknell/magento-prefab',
             'version' => '1.0.0',
             'description' => '',
-            'main' => 'gulpfile.js',
             'author' => '',
             'license' => 'MIT',
             'dependencies' => $config['dependencies'],

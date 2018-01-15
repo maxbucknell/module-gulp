@@ -1,13 +1,13 @@
 <?php
 
-namespace MaxBucknell\Gulp\Model\DataProvider;
+namespace MaxBucknell\Prefab\Model\DataProvider;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Component\ComponentRegistrar;
 use Magento\Framework\View\Design\Theme\FlyweightFactory;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\App\Emulation;
-use MaxBucknell\Gulp\Api\DataProviderInterface;
+use MaxBucknell\Prefab\Api\DataProviderInterface;
 use Magento\Theme\Model\View\Design;
 
 class Themes implements DataProviderInterface

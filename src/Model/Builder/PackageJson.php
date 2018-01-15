@@ -1,11 +1,11 @@
 <?php
 
-namespace MaxBucknell\Gulp\Model\Builder;
+namespace MaxBucknell\Prefab\Model\Builder;
 
-use MaxBucknell\Gulp\Api\BuilderInterface;
-use MaxBucknell\Gulp\Model\Generator\PackageJson as PackageJsonGenerator;
-use MaxBucknell\Gulp\Model\Filesystem;
-use MaxBucknell\Gulp\Model\Config\Data as GulpConfig;
+use MaxBucknell\Prefab\Api\BuilderInterface;
+use MaxBucknell\Prefab\Model\Generator\PackageJson as PackageJsonGenerator;
+use MaxBucknell\Prefab\Model\Filesystem;
+use MaxBucknell\Prefab\Model\Config\Data as PrefabConfig;
 
 class PackageJson implements BuilderInterface
 {
@@ -20,23 +20,23 @@ class PackageJson implements BuilderInterface
     private $packageJsonGenerator;
 
     /**
-     * @var GulpConfig
+     * @var PrefabConfig
      */
-    private $gulpConfig;
+    private $prefabConfig;
 
     public function __construct(
         Filesystem $filesystem,
         PackageJsonGenerator $packageJsonGenerator,
-        GulpConfig $gulpConfig
+        PrefabConfig $prefabConfig
     ) {
         $this->filesystem = $filesystem;
         $this->packageJsonGenerator = $packageJsonGenerator;
-        $this->gulpConfig = $gulpConfig;
+        $this->prefabConfig = $prefabConfig;
     }
 
     public function build()
     {
-        $config = $this->gulpConfig->get(null);
+        $config = $this->prefabConfig->get(null);
         $contents = $this->packageJsonGenerator->generate($config);
 
         $location = $this->filesystem->getLocation();

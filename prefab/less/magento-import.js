@@ -1,4 +1,4 @@
-const magentoData = require('prefab/MaxBucknell_Gulp/lib/magento-data');
+const magentoData = require('prefab/MaxBucknell_Prefab/lib/magento-data');
 const _ = require('lodash');
 const path = require('path');
 const fs = require('fs');

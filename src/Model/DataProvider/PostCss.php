@@ -1,10 +1,10 @@
 <?php
 
-namespace MaxBucknell\Gulp\Model\DataProvider;
+namespace MaxBucknell\Prefab\Model\DataProvider;
 
 
 use Magento\Store\Api\Data\StoreInterface;
-use MaxBucknell\Gulp\Api\DataProviderInterface;
+use MaxBucknell\Prefab\Api\DataProviderInterface;
 
 class PostCss implements DataProviderInterface
 {

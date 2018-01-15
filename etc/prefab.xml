@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<gulp
+<prefab
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="urn:magento:module:MaxBucknell_Gulp:etc/gulp.xsd"
+    xsi:noNamespaceSchemaLocation="urn:magento:module:MaxBucknell_Prefab:etc/prefab.xsd"
 >
     <task name="env">
         <command>env</command>
@@ -14,7 +14,7 @@
             <package name="mkdirp" version="latest" />
         </dependencies>
 
-        <command>node prefab/MaxBucknell_Gulp/task/flatten/static.js</command>
+        <command>node prefab/MaxBucknell_Prefab/task/flatten/static.js</command>
     </task>
 
     <task name="flatten:templates">
@@ -24,7 +24,7 @@
             <package name="mkdirp" version="latest" />
         </dependencies>
 
-        <command>node prefab/MaxBucknell_Gulp/task/flatten/templates.js</command>
+        <command>node prefab/MaxBucknell_Prefab/task/flatten/templates.js</command>
     </task>
 
     <task name="flatten:requirejs-config">
@@ -34,7 +34,7 @@
             <package name="mkdirp" version="latest" />
         </dependencies>
 
-        <command>node prefab/MaxBucknell_Gulp/task/flatten/requirejs-config.js</command>
+        <command>node prefab/MaxBucknell_Prefab/task/flatten/requirejs-config.js</command>
     </task>
 
     <task name="flatten">
@@ -50,7 +50,7 @@
             <package name="rimraf" version="latest" />
         </dependencies>
 
-        <command>node prefab/MaxBucknell_Gulp/task/clean/build.js</command>
+        <command>node prefab/MaxBucknell_Prefab/task/clean/build.js</command>
     </task>
 
     <task name="clean:pub">
@@ -58,7 +58,7 @@
             <package name="rimraf" version="latest" />
         </dependencies>
 
-        <command>node prefab/MaxBucknell_Gulp/task/clean/pub.js</command>
+        <command>node prefab/MaxBucknell_Prefab/task/clean/pub.js</command>
     </task>
 
     <task name="clean">
@@ -71,7 +71,7 @@
             <package name="spawn-command" version="latest" />
             <package name="concurrently" version="latest" />
         </dependencies>
-        <command>node prefab/MaxBucknell_Gulp/task/less.js 'lessc --source-map-map-inline --plugin=./prefab/MaxBucknell_Gulp/less/magento-import.js {{input}} > {{output}}'</command>
+        <command>node prefab/MaxBucknell_Prefab/task/less.js 'lessc --source-map-map-inline --plugin=./prefab/MaxBucknell_Prefab/less/magento-import.js {{input}} > {{output}}'</command>
     </task>
 
     <task name="css">
@@ -84,7 +84,7 @@
             <package name="cssnano" version="latest" />
             <package name="autoprefixer" version="latest" />
         </dependencies>
-        <command>node prefab/MaxBucknell_Gulp/task/postcss.js</command>
+        <command>node prefab/MaxBucknell_Prefab/task/postcss.js</command>
     </task>
 
     <task name="copy">
@@ -98,7 +98,7 @@
         <dependencies>
             <package name="glob" version="latest" />
         </dependencies>
-        <command>node prefab/MaxBucknell_Gulp/task/requirejs-config.js &gt; "$OUTPUT_DIR/requirejs-config.js"</command>
+        <command>node prefab/MaxBucknell_Prefab/task/requirejs-config.js &gt; "$OUTPUT_DIR/requirejs-config.js"</command>
     </task>
 
     <task name="babel">
@@ -106,7 +106,7 @@
             <package name="babel-cli" version="^6.26" />
             <package name="babel-preset-env" version="^1.6.1" />
         </dependencies>
-        <command>cp ./prefab/MaxBucknell_Gulp/babel/babelrc ./.babelrc &amp;&amp; babel --out-dir "$OUTPUT_DIR" --extensions ".es" "$BUILD_DIR/flat/static" &amp;&amp; rm ./.babelrc</command>
+        <command>cp ./prefab/MaxBucknell_Prefab/babel/babelrc ./.babelrc &amp;&amp; babel --out-dir "$OUTPUT_DIR" --extensions ".es" "$BUILD_DIR/flat/static" &amp;&amp; rm ./.babelrc</command>
     </task>
 
     <task name="js">
@@ -118,7 +118,7 @@
             <package name="babel-cli" version="^6.26.0" />
             <package name="babel-preset-minify" version="latest" />
         </dependencies>
-        <command>cp ./prefab/MaxBucknell_Gulp/minify-babelrc ./.babelrc &amp;&amp; babel --out-dir="$OUTPUT_DIR" --extensions=".js" --ignore="$OUTPUT_DIR/Magento_Swagger/**/*,$OUTPUT_DIR/underscore.js,$OUTPUT_DIR/requirejs/require.js,$OUTPUT_DIR/Mageplaza_Core,$OUTPUT_DIR/prototype,$OUTPUT_DIR/extjs,$OUTPUT_DIR/legacy-build.min.js,$OUTPUT_DIR/mage/adminhtml,$OUTPUT_DIR/scriptaculous,$OUTPUT_DIR/tiny_mce" "$OUTPUT_DIR" &amp;&amp; rm ./.babelrc</command>
+        <command>cp ./prefab/MaxBucknell_Prefab/minify-babelrc ./.babelrc &amp;&amp; babel --out-dir="$OUTPUT_DIR" --extensions=".js" --ignore="$OUTPUT_DIR/Magento_Swagger/**/*,$OUTPUT_DIR/underscore.js,$OUTPUT_DIR/requirejs/require.js,$OUTPUT_DIR/Mageplaza_Core,$OUTPUT_DIR/prototype,$OUTPUT_DIR/extjs,$OUTPUT_DIR/legacy-build.min.js,$OUTPUT_DIR/mage/adminhtml,$OUTPUT_DIR/scriptaculous,$OUTPUT_DIR/tiny_mce" "$OUTPUT_DIR" &amp;&amp; rm ./.babelrc</command>
     </task>
 
     <task name="build">
@@ -151,4 +151,4 @@
     <task name="start">
         <command>npm run clean &amp;&amp; npm run flatten &amp;&amp; npm run build &amp;&amp; npm run watch</command>
     </task>
-</gulp>
+</prefab>

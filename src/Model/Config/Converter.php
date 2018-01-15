@@ -1,5 +1,5 @@
 <?php
-namespace MaxBucknell\Gulp\Model\Config;
+namespace MaxBucknell\Prefab\Model\Config;
 
 use Magento\Framework\Config\ConverterInterface;
 

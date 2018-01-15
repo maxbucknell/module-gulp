@@ -1,12 +1,12 @@
 <?php
 
-namespace MaxBucknell\Gulp\Console\Command;
+namespace MaxBucknell\Prefab\Console\Command;
 
 
 use Magento\Framework\App\State;
 use Magento\Store\Api\StoreRepositoryInterface;
-use MaxBucknell\Gulp\Api\DataProviderInterface;
-use MaxBucknell\Gulp\Model\Filesystem;
+use MaxBucknell\Prefab\Api\DataProviderInterface;
+use MaxBucknell\Prefab\Model\Filesystem;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -52,8 +52,8 @@ class Run extends Command
 
     protected function configure()
     {
-        $this->setName('setup:gulp:run');
-        $this->setDescription('Run a Gulp command');
+        $this->setName('setup:prefab:run');
+        $this->setDescription('Run a Prefab command');
         $this->addOption(
             'store',
             's',

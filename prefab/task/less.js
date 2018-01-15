@@ -1,10 +1,10 @@
-const findLessFiles = require('prefab/MaxBucknell_Gulp/lib/find-less-files');
-const magentoData = require('prefab/MaxBucknell_Gulp/lib/magento-data');
+const findLessFiles = require('prefab/MaxBucknell_Prefab/lib/find-less-files');
+const magentoData = require('prefab/MaxBucknell_Prefab/lib/magento-data');
 const _ = require('lodash');
 const path = require('path');
 const promisify = require('util').promisify;
 const mkdirp = promisify(require('mkdirp'));
-const run = require('prefab/MaxBucknell_Gulp/lib/run');
+const run = require('prefab/MaxBucknell_Prefab/lib/run');
 
 function less () {
     const commandTemplate = _.template(process.argv[2], { interpolate: /{{([\s\S]+?)}}/g });

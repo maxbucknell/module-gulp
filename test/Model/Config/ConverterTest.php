@@ -1,8 +1,8 @@
 <?php
 
-namespace MaxBucknell\Gulp\Test\Unit\Model\Config;
+namespace MaxBucknell\Prefab\Test\Unit\Model\Config;
 
-use MaxBucknell\Gulp\Model\Config\Converter;
+use MaxBucknell\Prefab\Model\Config\Converter;
 
 class ConverterTest extends \PHPUnit_Framework_TestCase
 {
@@ -31,9 +31,9 @@ class ConverterTest extends \PHPUnit_Framework_TestCase
     {
         $source = $this->getDOMDocument(<<<XML
 <?xml version="1.0" encoding="UTF-8" ?>
-<gulp>
+<prefab>
 
-</gulp>
+</prefab>
 XML
         );
 
@@ -57,10 +57,10 @@ XML
     {
         $source = $this->getDOMDocument(<<<XML
 <?xml version="1.0" encoding="UTF-8" ?>
-<gulp>
+<prefab>
     <task name="foo">
     </task>
-</gulp>
+</prefab>
 XML
         );
 
@@ -79,10 +79,10 @@ XML
     {
         $source = $this->getDOMDocument(<<<XML
 <?xml version="1.0" encoding="UTF-8" ?>
-<gulp>
+<prefab>
     <task name="foo">
     </task>
-</gulp>
+</prefab>
 XML
         );
 
@@ -101,11 +101,11 @@ XML
     {
         $source = $this->getDOMDocument(<<<XML
 <?xml version="1.0" encoding="UTF-8" ?>
-<gulp>
+<prefab>
     <task name="foo">
         <source>bar.js</source>
     </task>
-</gulp>
+</prefab>
 XML
         );
 
@@ -134,7 +134,7 @@ XML
     {
         $source = $this->getDOMDocument(<<<XML
 <?xml version="1.0" encoding="UTF-8" ?>
-<gulp>
+<prefab>
     <task name="foo">
         <subtasks>
             <task name="bar" />
@@ -142,7 +142,7 @@ XML
         </subtasks>
 
     </task>
-</gulp>
+</prefab>
 XML
         );
 
@@ -171,10 +171,10 @@ XML
     {
         $source = $this->getDOMDocument(<<<XML
 <?xml version="1.0" encoding="UTF-8" ?>
-<gulp>
+<prefab>
     <task name="foo"></task>
     <task name="bar"></task>
-</gulp>
+</prefab>
 XML
         );
 
@@ -200,13 +200,13 @@ XML
     {
         $source = $this->getDOMDocument(<<<XML
 <?xml version="1.0" encoding="UTF-8" ?>
-<gulp>
+<prefab>
     <task name="foo">
         <dependencies>
             <package name="bar" version="^1.2.3" />
         </dependencies>
     </task>
-</gulp>
+</prefab>
 XML
         );
 
@@ -229,14 +229,14 @@ XML
     {
         $source = $this->getDOMDocument(<<<XML
 <?xml version="1.0" encoding="UTF-8" ?>
-<gulp>
+<prefab>
     <task name="foo">
         <dependencies>
             <package name="bar" version="^1.2.3" />
             <package name="baz" version="^4.5.6" />
         </dependencies>
     </task>
-</gulp>
+</prefab>
 XML
         );
 
@@ -260,7 +260,7 @@ XML
     {
         $source = $this->getDOMDocument(<<<XML
 <?xml version="1.0" encoding="UTF-8" ?>
-<gulp>
+<prefab>
     <task name="foo">
         <dependencies>
             <package name="bar" version="^4.5.6" />
@@ -271,7 +271,7 @@ XML
             <package name="qux" version="^1.2.3" />
         </dependencies>
     </task>
-</gulp>
+</prefab>
 XML
         );
 
@@ -295,7 +295,7 @@ XML
     {
         $source = $this->getDOMDocument(<<<XML
 <?xml version="1.0" encoding="UTF-8" ?>
-<gulp>
+<prefab>
     <task name="foo">
         <dependencies>
             <package name="bar" version="^1.2.3" />
@@ -306,7 +306,7 @@ XML
             <package name="bar" version="^4.5.6" />
         </dependencies>
     </task>
-</gulp>
+</prefab>
 XML
         );
 

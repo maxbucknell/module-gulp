@@ -1,5 +1,5 @@
 <?php
-namespace MaxBucknell\Gulp\Model;
+namespace MaxBucknell\Prefab\Model;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
 
